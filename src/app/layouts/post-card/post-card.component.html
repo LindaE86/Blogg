@@ -1,0 +1,14 @@
+<div class="card">
+    <img (click)="navigateToSinglePost(blog)" src="/assets/card-img1.jpg" alt="post-image" class="card-img-top">
+    <div class="card-body shadow-effect">
+        <ng-container *ngIf="blog">
+        <small class="bg-light text-danger text-center ">{{blog.category}}</small>
+        <small class="bg-light text-success text-center mx-3 ">Featured</small>
+        <small class="bg-light text-info text-center ">Views -100,255</small>
+    
+        <h5 class="mt-1">{{blog.title}}</h5>
+        <p>{{blog.description}}</p>
+    </ng-container>
+    </div>
+    <small class="bg-light text-warning text-center ml-3"> LAST UPDATED - {{date | date}}</small>
+</div>
