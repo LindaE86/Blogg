@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogsService } from 'src/app/services/blogs.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-comment-list',
@@ -8,18 +6,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit {
-  dateToday : Date = new Date();
-  selectedComments : any = null;
+ 
+  constructor(){}
 
-  constructor(private blogService : BlogsService){
-  }
+  ngOnInit(): void { 
   
-  ngOnInit(): void {
-      this.blogService.selectedBlog$.subscribe(
-        (response) => {
-          this.selectedComments = response?.comments;
-          console.log(this.selectedComments);  
-        }
-      )
+    }
   }
-}

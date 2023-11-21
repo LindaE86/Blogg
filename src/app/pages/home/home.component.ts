@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { catchError, filter, map } from 'rxjs/operators';
-import { Blog } from 'src/app/interfaces/blog';
-import { BlogsService } from 'src/app/services/blogs.service';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-home',
@@ -10,29 +7,24 @@ import { BlogsService } from 'src/app/services/blogs.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  blogList: Blog[] = [];
-  featuredList: Blog[] = [];
 
-  constructor(private blogService: BlogsService, private router : Router) {}
+  featuredPostsArray: Array<object> | any;
+  latestPostsArray: Array<object> | any;
+ 
+  constructor( private postService: PostsService ) {
 
-  ngOnInit(): void {
-    this.getData();
+   
   }
 
-  getData(): void {
-    this.blogService.getBlogs().pipe(
-      map((response: Blog[]) => {
-        this.blogList = response;
-        console.log(this.blogList);
-        return response;
-      }),
-      catchError((error) => {
-        console.log("API is down");
-        return [];
-      })
-    ).subscribe(
-      () =>
-        this.featuredList = this.blogList.filter((blog: Blog) => blog.featured)
-    );
+  ngOnInit(): void {
+
+    this.postService.loadFeatured().subscribe( val=>{
+      this.featuredPostsArray = val;
+    });
+
+    this.postService.loadLatest().subscribe(val =>{
+      this.latestPostsArray = val;
+    })
+   
   }
 }

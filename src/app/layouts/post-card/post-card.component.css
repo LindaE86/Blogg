@@ -1,8 +1,4 @@
 .card {
-    max-width: 400px; /* You can adjust the value to your desired width */
-}
-
-.card-body {
-    height: 100px; /* Adjust this value as needed */
-    overflow: hidden;
+    max-width: 400px; 
+    min-width: 500px;
 }

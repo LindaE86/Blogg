@@ -3,21 +3,17 @@
 
         <h4 class="mt-3 mb-3">Comments</h4>
 
-        <ng-container *ngFor="let comment of selectedComments">
-            <ng-container *ngIf="comment.approved">
                 <div class="comment-box mt-3">
-                    <h6 class="mb-0">{{ comment.commentTitle }}</h6>
-                    <small class="text-danger"> LAST UPDATED - {{ dateToday | date }}</small>
+                    <h6 class="mb-0"></h6>
+                    <small class="text-danger"> LAST UPDATED - </small>
 
                     <div class="mt-3 mb-3">
-                        {{ comment.commentDesc }}
+                        
                     </div>
 
                     <a href="#" class="mt-1">Reply</a>
                     <a href="#" class="mt-1 ms-3">View Reply</a>
                     <hr>
                 </div>
-            </ng-container>
-        </ng-container>
     </div>
 </div>

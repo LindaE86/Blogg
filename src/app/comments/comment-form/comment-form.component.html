@@ -3,7 +3,7 @@
         <h4>Leave a Comment</h4>
         <p>You can leave a comment using this comment form</p>
 
-        <form [formGroup]="commentsForm" (ngSubmit)="postComment()" >
+        <form>
             <div class="form-group">
                 <label for="">Name</label>
                 <input formControlName="commentTitle" type="text" class="form-control shadow-effect " placeholder="Enter your name here">

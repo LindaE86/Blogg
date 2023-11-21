@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
-import { Blog } from 'src/app/interfaces/blog';
-import { BlogsService } from 'src/app/services/blogs.service';
+import { ActivatedRoute } from '@angular/router';
+import { PostsService } from 'src/app/services/posts.service';
 
 @Component({
   selector: 'app-single-category',
@@ -10,31 +9,24 @@ import { BlogsService } from 'src/app/services/blogs.service';
 })
 export class SingleCategoryComponent implements OnInit {
 
-  category : string | null = null;
-  constructor(private blogService : BlogsService){}
-
-  ngOnInit(): void {
-      this.blogService.selectedCategory$.subscribe(
-        (category) => {
-          this.category = category;
-          console.log(category);
-          
-        } 
-          
-      )
-      this.getBlogsByCategory();
-  }
-
-  getBlogsByCategory(){
-    this.blogService.getBlogs().subscribe(
-      (data) => {
-        data.filter((blog) => {
-          this.category == blog.category
-        })
-        console.log(data);  
-      }
-    )
-  }
+  postArray: Array<object> | any;
+  categoryObj: any;
 
   
-}
+  constructor(private route: ActivatedRoute, private postService: PostsService ){}
+
+  ngOnInit(): void {
+
+    this.route.params.subscribe(val =>{
+      this.categoryObj = val;
+
+      this.postService.loadCategoryPosts(val['id']).subscribe(post => {
+        this.postArray = post;
+        
+      })
+
+    })
+
+    }
+  
+  }

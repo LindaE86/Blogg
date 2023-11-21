@@ -1,5 +1,12 @@
 export const environment = {
-    GET_BLOGS : 'http://localhost:8081/posts',
-    POST_BLOG : 'http://localhost:8081/add',
-    GET_BLOGS_BY_ID : 'http://localhost:8081/posts/',
+    production: true,
+    firebaseConfig: {
+        apiKey: "AIzaSyARSA5bdYhhDbI1tRDFvR46EjHUOQnOb04",
+        authDomain: "angular-blogg.firebaseapp.com",
+        projectId: "angular-blogg",
+        storageBucket: "angular-blogg.appspot.com",
+        messagingSenderId: "249344347890",
+        appId: "1:249344347890:web:c69c497b91eba589cd0a6b"
+      
+    }
 };

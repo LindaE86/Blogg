@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
-import { Blog } from 'src/app/interfaces/blog';
-import { BlogsService } from 'src/app/services/blogs.service';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-category-navbar',
@@ -10,13 +8,21 @@ import { BlogsService } from 'src/app/services/blogs.service';
 })
 export class CategoryNavbarComponent implements OnInit {
 
-  constructor(private blogService : BlogsService){}
+  categoryArray: Array<object> | any;
+
+  constructor(private categoryService: CategoriesService ){}
+
+
   ngOnInit(): void {
+
+    this.categoryService.loadData().subscribe(val => {
+      this.categoryArray = val;
+
+    })
+
+    }
+    
   }
 
-
-  setCategory(category : string){
-    this.blogService.setSelectedCategory(category);
-  }
   
-}
+
