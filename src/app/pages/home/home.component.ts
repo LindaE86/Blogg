@@ -10,21 +10,21 @@ export class HomeComponent implements OnInit {
 
   featuredPostsArray: Array<object> | any;
   latestPostsArray: Array<object> | any;
- 
-  constructor( private postService: PostsService ) {
 
-   
+  constructor(private postService: PostsService) {
+
+
   }
 
   ngOnInit(): void {
 
-    this.postService.loadFeatured().subscribe( val=>{
+    this.postService.loadFeatured().subscribe(val => {
       this.featuredPostsArray = val;
     });
 
-    this.postService.loadLatest().subscribe(val =>{
+    this.postService.loadLatest().subscribe(val => {
       this.latestPostsArray = val;
     })
-   
+
   }
 }

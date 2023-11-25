@@ -10,23 +10,27 @@ import { PostsService } from 'src/app/services/posts.service';
 export class SinglePostComponent implements OnInit {
 
   postData: any;
-  similarPostArray: Array<object> |any;
- 
-  constructor( private route: ActivatedRoute, private postService: PostsService) { }
+  similarPostArray: Array<object> | any;
+  Likes: number = 0;
+  postId: number | null = null;
+  Dislikes: number = 0;
+
+  constructor(private route: ActivatedRoute, private postService: PostsService) { }
 
 
   ngOnInit(): void {
 
     this.route.params.subscribe(val => {
+      this.postId = val['id']
 
-        this.postService.countViews(val['id']);
+      this.postService.countViews(val['id']);
 
-        this.postService.loadOnePost(val['id']).subscribe(post => {
-          this.postData = post;
-          this.loadSimilarPost(this.postData.category.categoryId);
-        })
+      this.postService.loadOnePost(val['id']).subscribe(post => {
+        this.postData = post;
+        this.loadSimilarPost(this.postData.category.categoryId);
+      })
     })
-  
+
   }
 
   loadSimilarPost(catId: any) {
@@ -36,6 +40,14 @@ export class SinglePostComponent implements OnInit {
     })
   }
 
+  addlike() {
+    this.Likes++;
+  }
+
+  dislike() {
+    this.Dislikes++;
+  }
+
 }
-  
+
 

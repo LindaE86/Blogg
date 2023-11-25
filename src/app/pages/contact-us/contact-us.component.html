@@ -1,1 +1,49 @@
-<p>contact-us works!</p>
+<div class="d-flex justify-content-center">
+    <section class="mt-5">
+
+        <div class="container mt-5 mb-5 p-5 bg-theme">
+            <h1 class="text-white text-center">About Us</h1>
+
+            <div class="p-5 mt-5 bg-secondary-theme text-theme-primary">
+
+                <h3>Linda Ekström</h3>
+                <p> Sweden <br>
+                    Ec-ubildningar Växjö </p>
+
+                <div class="aboutme">
+                    <h3 class="contactme"> Contact </h3>
+                    <form class="form" (ngSubmit)="submitForm($event)" #contactForm="ngForm">
+                        <div>
+                            <label class="label" for="name"> Name: </label>
+                            <input class="input" type="text" id="name" name="name" ngModel required>
+
+                        </div>
+
+                        <div>
+                            <label class="label" for="email"> Email: </label>
+                            <input class="input" type="email" id="email" name="email" ngModel required>
+                        </div>
+
+                        <div>
+                            <label class="labelmessage" for="message"> Message: </label>
+                            <input class="input" type="text" id="message" name="message" ngModel required>
+                        </div>
+                        <button class="submitForm" type="submit"> Submit </button>
+
+
+
+
+                    </form>
+                </div>
+
+
+
+                <div class="text-center">
+                    <a routerLink="/"><button class="btn btn-info btn-sm mt-5 btn-theme">Back to Home</button></a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</div>

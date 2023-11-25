@@ -9,14 +9,14 @@ import { TermsAndConditionsComponent } from './pages/terms-and-conditions/terms-
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'category/:category/:id', component : SingleCategoryComponent},
-  {path : 'post/:id' , component : SinglePostComponent},
- 
-  {path : 'about', component:AboutUsComponent},
-  {path : 'contact', component: ContactUsComponent},
-  {path: 'term-conditions', component: TermsAndConditionsComponent},
- 
+  { path: '', component: HomeComponent },
+  { path: 'category/:category/:id', component: SingleCategoryComponent },
+  { path: 'post/:id', component: SinglePostComponent },
+
+  { path: 'about', component: AboutUsComponent },
+  { path: 'contact', component: ContactUsComponent },
+  { path: 'term-conditions', component: TermsAndConditionsComponent },
+
 ];
 
 @NgModule({

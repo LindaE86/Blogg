@@ -10,7 +10,7 @@ export class CategoryNavbarComponent implements OnInit {
 
   categoryArray: Array<object> | any;
 
-  constructor(private categoryService: CategoriesService ){}
+  constructor(private categoryService: CategoriesService) { }
 
 
   ngOnInit(): void {
@@ -20,9 +20,9 @@ export class CategoryNavbarComponent implements OnInit {
 
     })
 
-    }
-    
   }
 
-  
+}
+
+
 

@@ -7,14 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./post-card.component.css']
 })
 export class PostCardComponent implements OnInit {
- 
-  constructor(){}
+
+  constructor() { }
 
   @Input()
   postData: any;
-  
-  ngOnInit(): void { 
-  
+
+  ngOnInit(): void {
+
   }
 
 }

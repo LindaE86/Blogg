@@ -16,35 +16,36 @@ body {
     background-color: rgb(10, 149, 133);
 }
 
-.site-logo{
-    padding : 5px 20px;
-    border-radius : 20px;
-    background-color : var(--secondary-color);
-    color : var(--primary-color);
-}
-
-.nav-link{
+.site-logo {
+    padding: 5px 20px;
+    border-radius: 20px;
+    background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
-.shadow-effect{
-    border : none;
+.nav-link {
+    color: var(--primary-color);
+}
+
+.shadow-effect {
+    border: none;
     box-shadow: 0px 0px 33px -10px rgba(71, 114, 254, 0.3);
 }
 
-.bg-theme{
+.bg-theme {
     background-color: var(--primary-color);
 }
 
-.bg-secondary-theme{
+.bg-secondary-theme {
     background-color: var(--secondary-color);
 }
 
-.text-theme-primary{
+.text-theme-primary {
     color: var(--primary-color);
 }
 
-input[type = text], input[type = email] {
+input[type=text],
+input[type=email] {
     height: 60px;
     padding-left: 20px;
     font-size: 13px;

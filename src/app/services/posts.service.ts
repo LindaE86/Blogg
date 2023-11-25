@@ -9,29 +9,13 @@ import firebase from 'firebase/compat/app';
 })
 export class PostsService {
 
-  constructor( private afs: AngularFirestore ) { }
+  constructor(private afs: AngularFirestore) { }
 
-  loadFeatured(){
+  loadFeatured() {
 
-    return this.afs.collection('posts', ref => ref.where('isFeatured', '==', true).limit(4) ).snapshotChanges().pipe(
-       map(actions => {
-          return actions.map(a => {
- 
-           const data = a.payload.doc.data();
-           const id = a.payload.doc.id;
-           return { id, data }
- 
-         })
-       })
-     )
- 
-   }
-
-   loadLatest() {
-
-    return this.afs.collection('posts', ref => ref.orderBy('createdAt') ).snapshotChanges().pipe(
+    return this.afs.collection('posts', ref => ref.where('isFeatured', '==', true).limit(4)).snapshotChanges().pipe(
       map(actions => {
-         return actions.map(a => {
+        return actions.map(a => {
 
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
@@ -41,12 +25,13 @@ export class PostsService {
       })
     )
 
-   }
+  }
 
-   loadCategoryPosts( categoryId: any ){
-    return this.afs.collection('posts', ref => ref.where('category.categoryId', '==', categoryId).limit(4) ).snapshotChanges().pipe(
+  loadLatest() {
+
+    return this.afs.collection('posts', ref => ref.orderBy('createdAt')).snapshotChanges().pipe(
       map(actions => {
-         return actions.map(a => {
+        return actions.map(a => {
 
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
@@ -55,17 +40,13 @@ export class PostsService {
         })
       })
     )
-   }
 
-   loadOnePost( postId: any ) {
-      return this.afs.doc(`posts/${postId}`).valueChanges();
-   }
+  }
 
-
-   loadSimilar( catId: any ) {
-    return this.afs.collection('posts', ref => ref.where('category.categoryId', '==', catId).limit(4) ).snapshotChanges().pipe(
+  loadCategoryPosts(categoryId: any) {
+    return this.afs.collection('posts', ref => ref.where('category.categoryId', '==', categoryId).limit(4)).snapshotChanges().pipe(
       map(actions => {
-         return actions.map(a => {
+        return actions.map(a => {
 
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
@@ -74,19 +55,38 @@ export class PostsService {
         })
       })
     )
-   }
+  }
 
-   countViews( postId: any ) {
+  loadOnePost(postId: any) {
+    return this.afs.doc(`posts/${postId}`).valueChanges();
+  }
+
+
+  loadSimilar(catId: any) {
+    return this.afs.collection('posts', ref => ref.where('category.categoryId', '==', catId).limit(4)).snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, data }
+
+        })
+      })
+    )
+  }
+
+  countViews(postId: any) {
 
     const viewsCount = {
-        views: firebase.firestore.FieldValue.increment(1)
+      views: firebase.firestore.FieldValue.increment(1)
     }
 
     this.afs.doc(`posts/${postId}`).update(viewsCount).then(() => {
       console.log('Views Count Updated ..!');
     });
 
-   }
+  }
 
 
 
